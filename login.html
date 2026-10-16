@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinanceCare - Acesso e Cadastro Seguro</title>
+
+  <!-- Fontes de Alta Legibilidade (Atkinson Hyperlegible e Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Folhas de Estilo -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ====================================================================
+         Barra Superior de Acessibilidade
+         ==================================================================== -->
+    <header class="accessibility-bar" role="region" aria-label="Ajustes de Acessibilidade">
+      <div class="accessibility-group">
+        <span class="accessibility-label">🔠 Letra:</span>
+        <button type="button" id="btn-font-sm" class="btn-a11y" title="Tamanho de letra normal">A-</button>
+        <button type="button" id="btn-font-md" class="btn-a11y active" title="Tamanho de letra grande">A</button>
+        <button type="button" id="btn-font-lg" class="btn-a11y" title="Tamanho de letra muito grande">A+</button>
+        <button type="button" id="btn-toggle-contrast" class="btn-a11y" title="Alternar alto contraste">
+          🌓 <span>Alto Contraste</span>
+        </button>
+      </div>
+
+      <div class="accessibility-group">
+        <button type="button" id="btn-speak-screen" class="btn-speak-screen" title="Ouvir as instruções de login em voz alta">
+          🔊 <span>Ouvir Instruções</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         Card Central de Entrada e Cadastro Multiusuário
+         ==================================================================== -->
+    <main class="login-wrapper">
+      <div class="login-main-card">
+        
+        <!-- Identidade Visual -->
+        <div class="login-brand-header">
+          <img src="assets/logo.jpg" alt="Logotipo do FinanceCare" class="login-logo">
+          <div>
+            <h1 class="login-title">FinanceCare</h1>
+            <p class="login-subtitle">Meu Dinheiro Seguro • Controle Financeiro Individual e Acolhedor</p>
+          </div>
+        </div>
+
+        <!-- Abas: "Entrar" vs "Criar Conta" -->
+        <nav class="auth-nav-tabs" role="tablist" aria-label="Escolha de Login ou Cadastro">
+          <button type="button" id="tab-btn-login" class="btn-auth-tab active" role="tab" aria-selected="true" data-target="panel-login">
+            <span>🔑</span>
+            <span>Já Tenho Conta (Entrar)</span>
+          </button>
+          <button type="button" id="tab-btn-register" class="btn-auth-tab" role="tab" aria-selected="false" data-target="panel-register">
+            <span>✨</span>
+            <span>Criar Nova Conta</span>
+          </button>
+        </nav>
+
+        <!-- Caixa de Mensagens de Erro ou Sucesso -->
+        <div id="auth-feedback" class="auth-feedback-box" role="status"></div>
+
+        <!-- ================================================================
+             PAINEL 1: LOGIN (ENTRAR)
+             ================================================================ -->
+        <section id="panel-login" class="auth-panel active" role="tabpanel" aria-labelledby="tab-btn-login">
+          <form id="form-login">
+            
+            <div class="form-group-accessible">
+              <label for="login-email" class="form-label-accessible">Qual é o seu e-mail ou usuário?</label>
+              <div class="form-hint-accessible">Digite o endereço de e-mail ou nome que você usou no cadastro:</div>
+              <input type="text" id="login-email" class="input-auth" placeholder="Ex: seu.email@exemplo.com" autocomplete="username" required>
+            </div>
+
+            <div class="form-group-accessible">
+              <label for="login-password" class="form-label-accessible">Qual é a sua senha ou código?</label>
+              <div class="form-hint-accessible">Digite sua senha com calma:</div>
+              <input type="password" id="login-password" class="input-auth" placeholder="Digite sua senha" autocomplete="current-password" required>
+              <button type="button" id="btn-toggle-login-pwd" class="btn-toggle-password">
+                👁️ <span>Mostrar os caracteres digitados</span>
+              </button>
+            </div>
+
+            <button type="submit" id="btn-do-login" class="btn-submit-action primary">
+              <span>🟢</span>
+              <span>ENTRAR NO SISTEMA</span>
+            </button>
+
+          </form>
+
+          <!-- Aviso de Segurança e Privacidade Real -->
+          <div style="background-color: #F8FAFC; border: 2px solid var(--color-border); border-radius: var(--radius-md); padding: 18px; margin-top: 24px; text-align: left;">
+            <p style="font-size: var(--font-base); color: var(--color-text-muted); margin: 0; line-height: 1.6;">
+              🔒 <b>Segurança e Privacidade:</b> Suas informações financeiras são 100% confidenciais e protegidas por criptografia. Se este for o seu primeiro acesso, clique na aba <b>"Criar Nova Conta"</b> acima para cadastrar seus dados reais com autonomia.
+            </p>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAINEL 2: CADASTRO (CRIAR NOVA CONTA)
+             ================================================================ -->
+        <section id="panel-register" class="auth-panel" role="tabpanel" aria-labelledby="tab-btn-register">
+          <form id="form-register">
+
+            <div class="form-group-accessible">
+              <label for="reg-nome" class="form-label-accessible">Como você gostaria de ser chamado(a)?</label>
+              <div class="form-hint-accessible">Digite seu nome completo ou como a família te chama:</div>
+              <input type="text" id="reg-nome" class="input-auth" placeholder="Ex: Antônio Ferreira da Silva" required>
+            </div>
+
+            <div class="form-group-accessible">
+              <label for="reg-email" class="form-label-accessible">Seu e-mail ou nome de login:</label>
+              <div class="form-hint-accessible">Será usado toda vez que você for entrar:</div>
+              <input type="text" id="reg-email" class="input-auth" placeholder="Ex: antonio@meuemail.com" required>
+            </div>
+
+            <div class="form-group-accessible">
+              <label for="reg-password" class="form-label-accessible">Crie uma senha ou código simples:</label>
+              <div class="form-hint-accessible">Escolha um número ou palavra que você consiga lembrar (mínimo 4 caracteres):</div>
+              <input type="password" id="reg-password" class="input-auth" placeholder="Crie sua senha segura" required>
+              <button type="button" id="btn-toggle-reg-pwd" class="btn-toggle-password">
+                👁️ <span>Mostrar os caracteres digitados</span>
+              </button>
+            </div>
+
+            <div class="form-group-accessible">
+              <span class="form-label-accessible">Como você vai usar o sistema?</span>
+              <div class="role-choice-grid">
+                <label class="role-choice-card">
+                  <input type="radio" name="reg-role" value="titular" checked>
+                  <div>
+                    <div style="font-weight: 800; font-size: var(--font-base);">👵 Titular da Conta</div>
+                    <div style="font-size: 14px; color: var(--color-text-muted);">Vou controlar meu próprio dinheiro</div>
+                  </div>
+                </label>
+                <label class="role-choice-card">
+                  <input type="radio" name="reg-role" value="cuidador">
+                  <div>
+                    <div style="font-weight: 800; font-size: var(--font-base);">👨‍👧 Familiar / Cuidador</div>
+                    <div style="font-size: 14px; color: var(--color-text-muted);">Vou acompanhar e apoiar um familiar</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" id="btn-do-register" class="btn-submit-action primary">
+              <span>✨</span>
+              <span>CRIAR MINHA CONTA E ENTRAR</span>
+            </button>
+
+          </form>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
